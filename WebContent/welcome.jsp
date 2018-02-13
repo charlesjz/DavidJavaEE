@@ -9,10 +9,16 @@
 </head>
 <body>
 	
-	<h1>Hello,  <c:out value="${CurrentUserProfile.firstname}" /> <c:out value="${CurrentUserProfile.lastname}" /><p></h1>
+	<h1>Hello,  <c:out value="${CURRENT_USER_PROFILE.firstname}" /> <c:out value="${CURRENT_USER_PROFILE.lastname}" /><p></h1>
 	
 	 <h2>Welcome to VIC 2018-02 Web Application.<p>
-	 Please verify your email address: <c:out value="${CurrentUserProfile.email}" />. Should you have any further questions, please feel free to contact us.
+	 Please verify your email address: <c:out value="${CURRENT_USER_PROFILE.email}" />. Should you have any further questions, please feel free to contact us.
 	</h2>
+	
+	<form action="Search" method="get">
+		What to search: <input type=text" name="searchText">
+		<input type="submit" value="Search in Google">
+	</form>
+	<a href="Logout">Logout</a>
 </body>
 </html>
