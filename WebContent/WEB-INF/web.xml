@@ -8,5 +8,28 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <display-name>Check Info Servlet</display-name>
+    <servlet-name>Check-Info-Servlet</servlet-name>
+    <servlet-class>servlet.CheckInfoServlet</servlet-class>
+    <init-param>
+      <param-name>counter</param-name>
+      <param-value>100</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <display-name>Login Page</display-name>
+    <servlet-name>Login-Page</servlet-name>
+    <jsp-file>/login.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Check-Info-Servlet</servlet-name>
+    <url-pattern>/CheckInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Login-Page</servlet-name>
+    <url-pattern>/LoginPage</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import domain.UserProfile;
 import services.AuthService;
 import services.AuthServiceImpl;
@@ -44,13 +43,15 @@ public class LoginServlet extends HttpServlet {
 		try {
 			UserProfile userProfile = service.authenticate(username, password);
 			request.setAttribute( "CurrentUserProfile", userProfile );
-			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp"); 
-			rd.forward(request, response);  
+			request.getSession().setAttribute( "CURRENT_USER_PROFILE", userProfile );
+//			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp"); 
+//			rd.forward(request, response);
+			response.sendRedirect( "welcome.jsp" );
 		} catch (InvalidUsernameOrPasswordException e) {
 //			result = "Authentication failed (invalid username or password). Please try again.";
 //			String resultPageContent = "<html><head><title>" + result + "</title></head><body><h1>" + result + "</h1></body></htnml>";
 //			response.getWriter().append( resultPageContent );
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp?err=1"); 
+			RequestDispatcher rd = request.getRequestDispatcher("LoginPage?err=1"); 
 			rd.forward(request, response);
 		}
 //		if ( "abc".equals( username ) && "123".equals( password ) ) {
@@ -60,6 +61,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost() is called");
 		doGet(request, response);
 	}
 
